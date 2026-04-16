@@ -10,10 +10,6 @@
   --accent: #f1b24a;
   --soft: #f6dfb6;
   --success: #2f7f57;
-  --timer-top: rgba(225, 239, 232, 0.9);
-  --timer-bottom: rgba(191, 217, 203, 0.96);
-  --timer-inner-top: rgba(247, 252, 249, 0.94);
-  --timer-inner-bottom: rgba(224, 237, 229, 0.95);
   --shadow: 0 28px 70px rgba(93, 46, 18, 0.16);
   --ring: conic-gradient(
     from 180deg,
@@ -122,7 +118,7 @@ body::after {
   min-height: 420px;
   border-radius: 28px;
   background:
-    linear-gradient(180deg, var(--timer-top), var(--timer-bottom)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 247, 233, 0.92)),
     var(--ring);
   padding: 1.4rem;
   position: relative;
@@ -135,7 +131,7 @@ body::after {
   inset: 18px;
   border-radius: 24px;
   background:
-    linear-gradient(145deg, var(--timer-inner-top), var(--timer-inner-bottom));
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(241, 234, 223, 0.92));
   box-shadow: inset 0 0 0 1px rgba(117, 53, 21, 0.08);
 }
 
