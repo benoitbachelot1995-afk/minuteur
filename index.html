@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minuteur Cuisine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">Cuisine minute</p>
+        <h1>Minuteur cuisine</h1>
+        <p class="intro">
+          Un minuteur simple et clair pour surveiller la cuisson, l'infusion ou
+          le repos de vos préparations.
+        </p>
+      </section>
+
+      <section class="timer-card" aria-label="Minuteur principal">
+        <div class="dial" id="dial" aria-hidden="true">
+          <div class="dial-inner">
+            <p class="dial-label">Temps restant</p>
+            <p class="time-display" id="time-display" aria-live="polite">
+              05:00
+            </p>
+            <p class="status" id="status">Prêt à démarrer</p>
+          </div>
+        </div>
+
+        <div class="controls">
+          <form class="custom-time" id="custom-time-form">
+            <label>
+              Minutes
+              <input
+                id="minutes-input"
+                name="minutes"
+                type="number"
+                min="0"
+                max="59"
+                inputmode="numeric"
+                value="5"
+              />
+            </label>
+
+            <label>
+              Secondes
+              <input
+                id="seconds-input"
+                name="seconds"
+                type="number"
+                min="0"
+                max="59"
+                inputmode="numeric"
+                value="0"
+              />
+            </label>
+
+            <button type="submit" class="button button-secondary">
+              Régler
+            </button>
+          </form>
+
+          <div class="action-row">
+            <button type="button" class="button button-primary" id="start-pause">
+              Démarrer
+            </button>
+            <button type="button" class="button button-secondary" id="reset">
+              Réinitialiser
+            </button>
+            <button type="button" class="button button-ghost" id="stop-alert">
+              Couper l'alerte
+            </button>
+          </div>
+
+          <div class="preset-section">
+            <p class="preset-title">Repères rapides</p>
+            <div class="preset-grid">
+              <button type="button" class="preset" data-seconds="180">
+                Oeufs mollets
+                <span>3 min</span>
+              </button>
+              <button type="button" class="preset" data-seconds="300">
+                Thé
+                <span>5 min</span>
+              </button>
+              <button type="button" class="preset" data-seconds="480">
+                Riz
+                <span>8 min</span>
+              </button>
+              <button type="button" class="preset" data-seconds="720">
+                Légumes
+                <span>12 min</span>
+              </button>
+              <button type="button" class="preset" data-seconds="1200">
+                Pâtes
+                <span>20 min</span>
+              </button>
+              <button type="button" class="preset" data-seconds="1800">
+                Mijoté
+                <span>30 min</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

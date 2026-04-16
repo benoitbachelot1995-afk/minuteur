@@ -1,0 +1,338 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f2e8;
+  --card: rgba(255, 252, 246, 0.78);
+  --card-border: rgba(117, 53, 21, 0.12);
+  --text: #2b1b12;
+  --muted: #7a675c;
+  --primary: #c95b2a;
+  --primary-dark: #8f3d18;
+  --accent: #f1b24a;
+  --soft: #f6dfb6;
+  --success: #2f7f57;
+  --shadow: 0 28px 70px rgba(93, 46, 18, 0.16);
+  --ring: conic-gradient(
+    from 180deg,
+    var(--primary) 0deg,
+    var(--accent) 210deg,
+    rgba(201, 91, 42, 0.15) 210deg,
+    rgba(201, 91, 42, 0.12) 360deg
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(241, 178, 74, 0.35), transparent 32%),
+    radial-gradient(circle at right 20%, rgba(201, 91, 42, 0.18), transparent 20%),
+    linear-gradient(135deg, #f9f3ea 0%, #f1eadf 48%, #eadcca 100%);
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  width: 22rem;
+  height: 22rem;
+  top: -6rem;
+  right: -4rem;
+  border-radius: 50%;
+  background: rgba(201, 91, 42, 0.11);
+  filter: blur(18px);
+}
+
+body::after {
+  width: 16rem;
+  height: 16rem;
+  bottom: -4rem;
+  left: -4rem;
+  border-radius: 50%;
+  background: rgba(241, 178, 74, 0.18);
+  filter: blur(20px);
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+
+.hero {
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  line-height: 0.94;
+}
+
+.intro {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.timer-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--card-border);
+  border-radius: 32px;
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.dial {
+  display: grid;
+  place-items: center;
+  min-height: 420px;
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 247, 233, 0.92)),
+    var(--ring);
+  padding: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dial::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(241, 234, 223, 0.92));
+  box-shadow: inset 0 0 0 1px rgba(117, 53, 21, 0.08);
+}
+
+.dial-inner {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+}
+
+.dial-label,
+.status,
+.preset-title,
+label {
+  color: var(--muted);
+}
+
+.dial-label {
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.time-display {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: clamp(4rem, 11vw, 6.8rem);
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  margin: 0.85rem 0 0;
+  font-size: 1rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.custom-time {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  align-items: end;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(117, 53, 21, 0.15);
+  border-radius: 16px;
+  font: inherit;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(201, 91, 42, 0.26);
+  outline-offset: 3px;
+}
+
+.action-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.button,
+.preset {
+  border: 0;
+  border-radius: 18px;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.button {
+  padding: 0.95rem 1.2rem;
+  font-weight: 700;
+}
+
+.button:hover,
+.preset:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: linear-gradient(135deg, var(--primary), #df7f35);
+  color: white;
+  box-shadow: 0 14px 30px rgba(201, 91, 42, 0.28);
+}
+
+.button-secondary {
+  background: rgba(241, 178, 74, 0.18);
+  color: var(--text);
+}
+
+.button-ghost {
+  background: rgba(43, 27, 18, 0.07);
+  color: var(--text);
+}
+
+.preset-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.preset-title {
+  margin: 0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.preset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+}
+
+.preset span {
+  color: var(--primary-dark);
+  font-size: 0.92rem;
+}
+
+.dial.finished {
+  animation: glow 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 0 rgba(201, 91, 42, 0.16);
+  }
+
+  to {
+    box-shadow: 0 0 42px rgba(201, 91, 42, 0.38);
+  }
+}
+
+@media (max-width: 860px) {
+  .timer-card {
+    grid-template-columns: 1fr;
+  }
+
+  .dial {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    width: min(100% - 1rem, 1100px);
+    padding-top: 1.25rem;
+  }
+
+  .timer-card {
+    padding: 1rem;
+    border-radius: 26px;
+  }
+
+  .custom-time,
+  .preset-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-row {
+    flex-direction: column;
+  }
+
+  .button,
+  .preset {
+    width: 100%;
+  }
+}
